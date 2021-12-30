@@ -1,0 +1,15 @@
+<h2>Activity 3</h2>
+
+<div *ngFor="let location of locations" class="location-container">
+  <h3>
+    {{ location.name }}
+    <i class="fas" [ngClass]="location.status === 'Active' ? 'fa-check-circle bg-green' : 'fa-times-circle bg-red'"></i>
+  </h3>
+  <p>
+    {{ location.address.street }},
+    {{ location.address.suburb }},
+    {{ location.address.city }},
+    {{ location.address.state }},
+    {{ location.address.country }}
+  </p>
+</div>

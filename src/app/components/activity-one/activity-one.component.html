@@ -1,0 +1,90 @@
+<h2>Activity 1</h2>
+
+<div class="form-container">
+  <button
+    type="button"
+    (click)="toggleForm()"
+    *ngIf="!showForm"
+    class="btn-blue"
+  >
+    Add New Baked Goods
+  </button>
+
+  <form [formGroup]="bakedGoodsForm" (ngSubmit)="onSubmit()" *ngIf="showForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        placeholder="Name"
+        id="name"
+        formControlName="name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="type">Type</label>
+      <input
+        type="text"
+        placeholder="Type"
+        id="type"
+        formControlName="type"
+      />
+    </div>
+    <div class="form-group">
+      <label for="topping">Topping</label>
+      <input
+        type="text"
+        placeholder="Topping"
+        id="topping"
+        formControlName="topping"
+      />
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="bakedGoodsForm.invalid"
+      class="btn-blue"
+      style="margin-right: 5px"
+    >
+      Submit
+    </button>
+
+    <button
+      type="button"
+      (click)="toggleForm()"
+      class="btn-ruby"
+    >
+      Cancel
+    </button>
+  </form>
+</div>
+
+<div class="search-container">
+  <input
+    type="text"
+    placeholder="Search"
+    id="search"
+    [(ngModel)]="searchText"
+  />
+</div>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" [appSort]="data" data-order="desc" data-name="id">ID</th>
+        <th scope="col" [appSort]="data" data-order="desc" data-name="name">Name</th>
+        <th scope="col" [appSort]="data" data-order="desc" data-name="type">Type</th>
+        <th scope="col" [appSort]="data" data-order="desc" data-name="topping">Topping</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let desert of data | searchFilter: searchText">
+        <td>{{ desert.id }}</td>
+        <td>{{ desert.name }}</td>
+        <td>{{ desert.type }}</td>
+        <td>{{ desert.topping }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  

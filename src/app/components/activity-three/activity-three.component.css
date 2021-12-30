@@ -1,0 +1,21 @@
+/* Location card */
+.location-container {
+  border: 1px solid var(--light);
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  transition: all 0.1s linear;
+}
+
+/* Make card bigger on hover */
+.location-container:hover {
+  transform: scale(1.01);
+}
+
+/* Icon colours */
+.bg-red {
+  color: red;
+}
+.bg-green {
+  color: green;
+}
